@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jayashree P — AI & ML Engineer</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --ink:#1a1a1a;--ink2:#4a4a4a;--ink3:#7a7a7a;
+      --accent:#2563eb;--accent-bg:#eff6ff;
+      --bg:#ffffff;--bg2:#f8fafc;--border:#e2e8f0;
+      --radius:10px;--font:'Segoe UI',system-ui,sans-serif
+    }
+    body{font-family:var(--font);color:var(--ink);background:#f1f5f9;line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .hero{background:linear-gradient(135deg,#1e3a5f 0%,#2563eb 100%);color:#fff;padding:3.5rem 2rem 3rem;text-align:center}
+    .avatar{width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-weight:700;margin:0 auto 1.1rem;border:3px solid rgba(255,255,255,0.4)}
+    .hero h1{font-size:2.2rem;font-weight:700;letter-spacing:-0.5px;margin-bottom:0.3rem}
+    .hero .title{font-size:1rem;opacity:0.85;margin-bottom:1.4rem}
+    .hero-links{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
+    .hero-links a{background:rgba(255,255,255,0.15);color:#fff;padding:0.4rem 1.1rem;border-radius:20px;font-size:0.82rem;border:1px solid rgba(255,255,255,0.3);transition:background 0.2s;text-decoration:none}
+    .hero-links a:hover{background:rgba(255,255,255,0.28)}
+
+    .wrapper{max-width:820px;margin:0 auto;padding:0 1rem}
+
+    nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;display:flex;justify-content:center;overflow-x:auto}
+    nav button{background:none;border:none;padding:0.9rem 1.3rem;font-size:0.85rem;font-weight:500;color:var(--ink2);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;font-family:var(--font);transition:all 0.15s}
+    nav button.active,nav button:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+    .content{padding:2rem 0}
+    .section{display:none}
+    .section.show{display:block}
+
+    .obj-box{background:var(--accent-bg);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.25rem;font-size:0.92rem;color:var(--ink2);line-height:1.7;margin-bottom:2rem}
+
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.75rem;margin-bottom:1.75rem}
+    .stat-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;text-align:center}
+    .stat-num{font-size:1.7rem;font-weight:700;color:var(--accent)}
+    .stat-label{font-size:0.78rem;color:var(--ink3)}
+
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+    .skill-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.1rem}
+    .skill-card h4{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink3);margin-bottom:0.6rem;font-weight:600}
+    .tags{display:flex;flex-wrap:wrap;gap:0.35rem}
+    .tag{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:0.25rem 0.7rem;font-size:0.78rem;color:var(--ink2)}
+    .tag.hl{background:var(--accent-bg);border-color:#bfdbfe;color:#1d4ed8}
+
+    .proj-card{border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1rem;background:#fff;transition:border-color 0.2s,box-shadow 0.2s}
+    .proj-card:hover{border-color:#93c5fd;box-shadow:0 2px 14px rgba(37,99,235,0.08)}
+    .proj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.5rem}
+    .proj-name{font-size:1rem;font-weight:600;color:var(--ink)}
+    .proj-year{font-size:0.78rem;color:var(--ink3);white-space:nowrap;margin-top:2px}
+    .badge{display:inline-block;border-radius:20px;padding:0.2rem 0.65rem;font-size:0.75rem;font-weight:500;margin-bottom:0.5rem}
+    .badge-gold{background:#fef9c3;border:1px solid #fde047;color:#854d0e}
+    .badge-green{background:#dcfce7;border:1px solid #86efac;color:#166534}
+    .proj-desc{font-size:0.88rem;color:var(--ink2);margin-bottom:0.75rem;line-height:1.65}
+    .proj-tags{display:flex;flex-wrap:wrap;gap:0.3rem}
+    .proj-tag{background:var(--accent-bg);color:#1e40af;border-radius:20px;padding:0.2rem 0.65rem;font-size:0.76rem}
+
+    .cert-item{display:flex;align-items:flex-start;gap:0.75rem;padding:0.85rem 0;border-bottom:1px solid var(--border)}
+    .cert-item:last-child{border-bottom:none}
+    .cert-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:5px;flex-shrink:0}
+    .cert-name{font-size:0.9rem;font-weight:500}
+    .cert-issuer{font-size:0.8rem;color:var(--ink3)}
+
+    .edu-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1rem}
+    .edu-deg{font-size:1rem;font-weight:600;margin-bottom:0.2rem}
+    .edu-meta{font-size:0.85rem;color:var(--ink2);margin-bottom:0.5rem}
+    .edu-cgpa{display:inline-block;border-radius:20px;padding:0.2rem 0.7rem;font-size:0.8rem;font-weight:500}
+
+    .achievement{display:flex;align-items:center;gap:0.75rem;font-size:0.88rem;padding:0.5rem 0}
+
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem}
+    .contact-item{display:flex;align-items:center;gap:0.75rem;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:0.9rem 1rem}
+    .contact-icon{width:38px;height:38px;border-radius:8px;background:var(--accent-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .contact-icon svg{width:18px;height:18px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .contact-label{font-size:0.74rem;color:var(--ink3)}
+    .contact-val{font-size:0.85rem;font-weight:500}
+
+    .section-title{font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:1.25rem;padding-bottom:0.5rem;border-bottom:2px solid var(--border)}
+
+    @media(max-width:500px){
+      .hero h1{font-size:1.6rem}
+      nav button{padding:0.75rem 0.9rem;font-size:0.8rem}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">JP</div>
+  <h1>Jayashree P</h1>
+  <p class="title">AI &amp; ML Engineer &nbsp;·&nbsp; B.Tech 2026 &nbsp;·&nbsp; Bengaluru, India</p>
+  <div class="hero-links">
+    <a href="mailto:jayashreepalani12@gmail.com">✉ Email</a>
+    <a href="https://linkedin.com/in/jayashree-p-13a36b270" target="_blank">in LinkedIn</a>
+    <a href="https://github.com/JAYASHREEUSHA" target="_blank">⌥ GitHub</a>
+    <a href="tel:+918296291359">📞 +91 82962 91359</a>
+  </div>
+</div>
+
+<nav>
+  <button class="active" onclick="show('about',this)">About</button>
+  <button onclick="show('skills',this)">Skills</button>
+  <button onclick="show('projects',this)">Projects</button>
+  <button onclick="show('education',this)">Education</button>
+  <button onclick="show('contact',this)">Contact</button>
+</nav>
+
+<div class="wrapper">
+  <div class="content">
+
+    <!-- ABOUT -->
+    <div class="section show" id="about">
+      <div class="obj-box">
+        AI &amp; ML engineering fresher (B.Tech, 2026) skilled in building AI-powered applications, REST API backends, and full-stack web systems with Python, Flask, and JavaScript. Built INTERVEXA — an end-to-end AI interview evaluation platform — and led a team to win the Advaya Hackathon. Certified by Stanford, DeepLearning.AI, and Johns Hopkins.
+      </div>
+      <p class="section-title">Highlights</p>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Major Projects</div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Certifications</div></div>
+        <div class="stat-card"><div class="stat-num">🏆</div><div class="stat-label">Hackathon Winner</div></div>
+        <div class="stat-card"><div class="stat-num">O</div><div class="stat-label">Capstone Grade</div></div>
+      </div>
+      <p style="font-size:0.88rem;color:var(--ink2)">Currently open to AI/ML engineering, data science, and full-stack development opportunities in Bengaluru and remote.</p>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section" id="skills">
+      <p class="section-title">Technical Skills</p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>Languages</h4>
+          <div class="tags">
+            <span class="tag hl">Python</span><span class="tag hl">JavaScript (ES6)</span><span class="tag">SQL</span><span class="tag">PHP</span><span class="tag">Java (basics)</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>AI / ML</h4>
+          <div class="tags">
+            <span class="tag hl">Machine Learning</span><span class="tag hl">Deep Learning</span><span class="tag hl">NLP / BERT</span><span class="tag">Computer Vision</span><span class="tag">OpenCV</span><span class="tag">scikit-learn</span><span class="tag">TensorFlow</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Backend</h4>
+          <div class="tags">
+            <span class="tag hl">Flask</span><span class="tag hl">REST API</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">MySQL</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Frontend</h4>
+          <div class="tags">
+            <span class="tag hl">React</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Data Science</h4>
+          <div class="tags">
+            <span class="tag">Data Analysis</span><span class="tag">Feature Engineering</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Jupyter</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Dev Tools</h4>
+          <div class="tags">
+            <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Google Colab</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section" id="projects">
+      <p class="section-title">Projects</p>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-name">INTERVEXA — AI-Powered Interview Evaluation System</div>
+          <div class="proj-year">2025 – 2026</div>
+        </div>
+        <span class="badge badge-green">O Grade · 10.0 SGPA · B.Tech Capstone</span>
+        <p class="proj-desc">End-to-end multimodal AI interview platform with BERT-based NLP evaluation, keystroke-dynamics authentication, three-layer smart proctoring (YOLOv8n + MediaPipe), behavioral and voice analysis, and a weighted fusion engine producing automated hiring recommendations. Built with React/Vite frontend and FastAPI/Python backend.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span><span class="proj-tag">Flask</span><span class="proj-tag">BERT</span><span class="proj-tag">NLP</span><span class="proj-tag">YOLOv8n</span><span class="proj-tag">MediaPipe</span><span class="proj-tag">React</span><span class="proj-tag">REST API</span><span class="proj-tag">SQLite</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-name">AR Culture Lens</div>
+          <div class="proj-year">2024</div>
+        </div>
+        <span class="badge badge-gold">🏆 Top Project — Advaya Hackathon</span>
+        <p class="proj-desc">Led a cross-functional team to build an Augmented Reality landmark-recognition system using Python and OpenCV with real-time image processing. Integrated multilingual translation and live cultural information overlay, delivered under 24-hour hackathon constraints.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span><span class="proj-tag">OpenCV</span><span class="proj-tag">Computer Vision</span><span class="proj-tag">AR</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-name">Library Management System</div>
+          <div class="proj-year">2023</div>
+        </div>
+        <p class="proj-desc" style="margin-top:0.5rem">Independently built a complete web application with role-based access control, user authentication, book record management, and issue/return workflows. Covers full CRUD operations, relational database design, and session management.</p>
+        <div class="proj-tags">
+          <span class="proj-tag">PHP</span><span class="proj-tag">MySQL</span><span class="proj-tag">JavaScript</span><span class="proj-tag">Full Stack</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section" id="education">
+      <p class="section-title">Education</p>
+      <div class="edu-card">
+        <div class="edu-deg">B.Tech — Artificial Intelligence &amp; Machine Learning</div>
+        <div class="edu-meta">MS Ramaiah University of Applied Sciences, Bengaluru &nbsp;·&nbsp; 2023 – 2026</div>
+        <span class="edu-cgpa" style="background:var(--accent-bg);color:#1d4ed8">CGPA 7.78 / 10</span>
+      </div>
+      <div class="edu-card">
+        <div class="edu-deg">Diploma — Computer Science</div>
+        <div class="edu-meta">Ramaiah Polytechnic, Bengaluru</div>
+        <span class="edu-cgpa" style="background:#f0fdf4;color:#166534">CGPA 8.76 / 10 · First Class with Distinction</span>
+      </div>
+
+      <p class="section-title" style="margin-top:2rem">Certifications</p>
+      <div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div><div class="cert-name">DeepLearning.AI TensorFlow Developer Professional Certificate</div><div class="cert-issuer">Coursera · 2026</div></div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div><div class="cert-name">Machine Learning Specialization</div><div class="cert-issuer">Stanford University &amp; DeepLearning.AI, Coursera · 2025</div></div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot"></div>
+          <div><div class="cert-name">Data Science: Statistics &amp; Machine Learning Specialization</div><div class="cert-issuer">Johns Hopkins University, Coursera · 2026</div></div>
+        </div>
+      </div>
+
+      <p class="section-title" style="margin-top:2rem">Achievements</p>
+      <div class="achievement"><span>🏆</span> Top Performing Project — Advaya Hackathon (multi-college event, 2024)</div>
+      <div class="achievement"><span>👩‍💼</span> Team Lead — Coordinated cross-functional teams across multiple academic projects</div>
+      <div class="achievement"><span>🎓</span> AI/ML Internship — AiROBOSOFT</div>
+      <div class="achievement"><span>✅</span> HackerRank badges — Python &amp; SQL</div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section" id="contact">
+      <p class="section-title">Get in Touch</p>
+      <p style="font-size:0.9rem;color:var(--ink2);margin-bottom:1.25rem">Open to AI/ML engineering, data science, and software development roles. Feel free to reach out!</p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></div>
+          <div><div class="contact-label">Email</div><div class="contact-val"><a href="mailto:jayashreepalani12@gmail.com">jayashreepalani12@gmail.com</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><div class="contact-label">Phone</div><div class="contact-val"><a href="tel:+918296291359">+91 82962 91359</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="contact-label">LinkedIn</div><div class="contact-val"><a href="https://linkedin.com/in/jayashree-p-13a36b270" target="_blank">jayashree-p</a></div></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></div>
+          <div><div class="contact-label">GitHub</div><div class="contact-val"><a href="https://github.com/JAYASHREEUSHA" target="_blank">JAYASHREEUSHA</a></div></div>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;background:var(--accent-bg);border-radius:var(--radius);padding:1rem 1.25rem;font-size:0.87rem;color:#1e40af">
+        📍 Based in Bengaluru, India &nbsp;·&nbsp; Available for on-site and remote roles
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('show'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('show');
+  btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
